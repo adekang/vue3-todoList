@@ -2,7 +2,7 @@
   <ul class="todo-main">
     <Item
       v-for="(todo, index) in todos"
-      :index="index"
+      :index="Number(index)"
       :key="todo.id"
       :todo="todo"
       :deleteTodo="deleteTodo"
