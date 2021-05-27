@@ -18,7 +18,7 @@ export default defineComponent({
   name: "item",
   props: {
     todo: {
-      types: Object as () => Todo,
+      type: Object as () => Todo,
       required: true,
     },
     index: {

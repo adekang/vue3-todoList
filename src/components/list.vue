@@ -13,6 +13,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Item from "./item.vue";
+
 export default defineComponent({
   name: "list",
   components: { Item },
