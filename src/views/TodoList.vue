@@ -23,12 +23,6 @@ export default defineComponent({
     Footer,
   },
   setup() {
-    // const state = reactive<{ todos: Todo[] }>({
-    //   todos: [
-    //     { id: 1, title: "宝马", isComputed: false },
-    //     { id: 2, title: "睡觉", isComputed: false },
-    //     { id: 3, title: "吃饭", isComputed: false },
-    //   ],
     const state = reactive<{ todos: Todo[] }>({
       todos: [],
     });
@@ -63,7 +57,6 @@ export default defineComponent({
     };
 
     //  存储在浏览器里面
-
     // watch(
     //   () => state.todos,
     //   value => {
