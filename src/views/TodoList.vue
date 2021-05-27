@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
+import { defineComponent, reactive, toRefs, watch, onMounted, provide } from "vue";
 import Header from "../components/header.vue";
 import List from "../components/list.vue";
 import Footer from "../components/footer.vue";
@@ -47,6 +47,9 @@ export default defineComponent({
     const updateTodo = (todo: Todo, iscompleted: boolean) => {
       todo.isCompleted = iscompleted;
     };
+
+    provide("deleteTodo", deleteTodo);
+    provide("updateTodo", updateTodo);
 
     // 全选全不选的方法
     const checkAll = (iscompleted: boolean) => {

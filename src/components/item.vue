@@ -12,17 +12,13 @@
   </li>
 </template>
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, inject } from "vue";
 import { Todo } from "../types/todo";
 export default defineComponent({
   name: "item",
   props: {
     todo: {
       types: Object as () => Todo,
-      required: true,
-    },
-    deleteTodo: {
-      type: Function,
       required: true,
     },
     index: {
@@ -49,9 +45,14 @@ export default defineComponent({
         isShow.value = !isShow.value;
       }
     };
+    const deletItem: Function | undefined = inject("deleteTodo");
+    const updateItem: Function | undefined = inject("updateTodo");
+
     const delTodo = () => {
       if (window.confirm("确定要删除吗？")) {
-        props.deleteTodo(props.index);
+        if (deletItem != undefined) {
+          deletItem(props.index);
+        }
       }
     };
 
@@ -60,7 +61,9 @@ export default defineComponent({
         return props.todo.isCompleted;
       },
       set(val) {
-        props.updateTodo(props.todo, val);
+        if (updateItem != undefined) {
+          updateItem(props.todo, val);
+        }
       },
     });
     return { mouseHandler, bgcolor, mycolor, isShow, delTodo, isCompleted };
