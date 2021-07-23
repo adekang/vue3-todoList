@@ -7,16 +7,7 @@
       <span>已完成{{ count }}</span>
       / 全部{{ todos.length }}
     </span>
-    <button
-      class="btn btn-danger"
-      @click="
-        () => {
-          clearAlloption;
-        }
-      "
-    >
-      清除已完成任务
-    </button>
+    <button class="btn btn-danger" @click="clearTodo">清除已完成任务</button>
   </div>
 </template>
 <script lang="ts">
@@ -51,7 +42,10 @@ export default defineComponent({
         props.checkAll(val);
       },
     });
-    return { count, isCheckAll };
+    const clearTodo = () => {
+      props.clearAlloption();
+    };
+    return { count, isCheckAll, clearTodo };
   },
 });
 </script>
